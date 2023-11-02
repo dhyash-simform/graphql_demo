@@ -81,6 +81,7 @@ class QueryExample extends StatelessWidget {
                       crossAxisCount: 2,
                       mainAxisSpacing: 20,
                       crossAxisSpacing: 20,
+                      childAspectRatio: 8 / 10,
                     ),
                     shrinkWrap: true,
                     padding: const EdgeInsets.all(20),

@@ -20,13 +20,13 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: IndexedStack(
         index: currentIndex,
-        children: const [
+        children: [
           /// In-order to use client in Query and Mutation
           ///
           // TODO(Task-2): wrap Client with Provider
-          QueryExample(),
+          const QueryExample(),
           MutationExample(),
-          SubscriptionExample(),
+          const SubscriptionExample(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

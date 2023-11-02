@@ -1,10 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:graphql_demo/values/app_client.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
 import '../../utils/gql_subscription.dart';
+import '../../values/app_client.dart';
 
 class SubscriptionExample extends StatelessWidget {
   const SubscriptionExample({super.key});
