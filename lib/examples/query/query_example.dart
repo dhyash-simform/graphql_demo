@@ -21,7 +21,7 @@ class QueryExample extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Rick and Morty',
+          'Query',
           style: Theme.of(context).appBarTheme.titleTextStyle?.copyWith(
                 color: Colors.white,
               ),

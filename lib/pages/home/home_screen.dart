@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../examples/mutation/mutation_example.dart';
 import '../../examples/query/query_example.dart';
-import '../../examples/subscription/subscription_example.dart';
 import '../../values/app_colors.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -26,7 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
           // TODO(Task-2): wrap Client with Provider
           const QueryExample(),
           MutationExample(),
-          const SubscriptionExample(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -47,12 +45,6 @@ class _HomeScreenState extends State<HomeScreen> {
               Icons.home,
             ),
             label: 'Mutation',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-            ),
-            label: 'Subscription',
           ),
         ],
       ),
