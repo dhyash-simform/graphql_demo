@@ -11,7 +11,7 @@ class LiftTile extends StatelessWidget {
   });
 
   final Lift lift;
-  final void Function(String, String) onSelected;
+  final void Function(String) onSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class LiftTile extends StatelessWidget {
                 child: PopupMenuButton(
                   padding: EdgeInsets.zero,
                   color: Colors.white,
-                  onSelected: (value) => onSelected(lift.id, value),
+                  onSelected: onSelected,
                   itemBuilder: (context) {
                     return [
                       const PopupMenuItem(

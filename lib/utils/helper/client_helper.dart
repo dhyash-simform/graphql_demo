@@ -3,32 +3,12 @@ import 'package:graphql/client.dart';
 
 class ClientHelper {
   static ValueNotifier<GraphQLClient> configClient({required String url}) {
-    final graphQLClient = GraphQLClient(
-      link: HttpLink('https://$url'),
-      cache: GraphQLCache(),
-      defaultPolicies: DefaultPolicies(
-        query: Policies(
-          fetch: FetchPolicy.cacheAndNetwork,
-        ),
+    final client = GraphQLClient(
+      link: HttpLink(url),
+      cache: GraphQLCache(
+        store: HiveStore(),
       ),
     );
-    return ValueNotifier(graphQLClient);
-  }
-
-  static ValueNotifier<GraphQLClient> configSubClient({required String url}) {
-    final graphQLClient = GraphQLClient(
-      link: Link.split(
-        (request) => false,
-        WebSocketLink('wss://$url/graphql'),
-        HttpLink('https://$url'),
-      ),
-      cache: GraphQLCache(),
-      defaultPolicies: DefaultPolicies(
-        query: Policies(
-          fetch: FetchPolicy.cacheAndNetwork,
-        ),
-      ),
-    );
-    return ValueNotifier(graphQLClient);
+    return ValueNotifier(client);
   }
 }

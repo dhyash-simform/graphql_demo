@@ -5,9 +5,6 @@ class AppClient {
   static final moonHighwayClient = ClientHelper.configClient(
     url: Apis.moonHighWayApi,
   );
-  static final moonHighwaySubClient = ClientHelper.configSubClient(
-    url: Apis.moonHighWayApi,
-  );
   static final rickAndMortyClient = ClientHelper.configClient(
     url: Apis.rickAndMortyApi,
   );
