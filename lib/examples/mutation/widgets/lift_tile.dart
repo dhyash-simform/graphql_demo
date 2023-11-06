@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../model/lift.dart';
+import '../../../model/lift/lift.dart';
 import '../../../values/app_colors.dart';
 
 class LiftTile extends StatelessWidget {
@@ -16,7 +16,9 @@ class LiftTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: const BorderRadius.all(
+        Radius.circular(20),
+      ),
       child: ColoredBox(
         color: AppColors.black,
         child: Padding(
@@ -62,7 +64,7 @@ class LiftTile extends StatelessWidget {
                   padding: EdgeInsets.zero,
                   color: Colors.white,
                   onSelected: onSelected,
-                  itemBuilder: (context) {
+                  itemBuilder: (_) {
                     return [
                       const PopupMenuItem(
                         value: 'OPEN',

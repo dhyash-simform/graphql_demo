@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../examples/mutation/mutation_example.dart';
 import '../../examples/query/query_example.dart';
-import '../../values/app_colors.dart';
+import 'widgets/gradient_background.dart';
+import 'widgets/home_nav_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,36 +18,21 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: currentIndex,
-        children: [
-          /// In-order to use client in Query and Mutation
-          ///
-          // TODO(Task-2): wrap Client with Provider
-          const QueryExample(),
-          MutationExample(),
-        ],
+      appBar: AppBar(
+        title: Text(currentIndex == 0 ? 'Query' : 'Mutation'),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: (value) => setState(() => currentIndex = value),
+      body: GradientBackground(
+        child: IndexedStack(
+          index: currentIndex,
+          children: [
+            const QueryExample(),
+            MutationExample(),
+          ],
+        ),
+      ),
+      bottomNavigationBar: HomeNavBar(
         currentIndex: currentIndex,
-        backgroundColor: AppColors.black,
-        unselectedItemColor: Colors.white30,
-        elevation: 0,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-            ),
-            label: 'Query',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-            ),
-            label: 'Mutation',
-          ),
-        ],
+        onChanged: (value) => setState(() => currentIndex = value),
       ),
     );
   }

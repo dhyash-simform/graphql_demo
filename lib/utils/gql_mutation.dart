@@ -1,11 +1,4 @@
 class GqlMutation {
-  static const String setLiftStatus = r'''
-   mutation SetMutation($id: ID!, $status: LiftStatus!) {
-     setLiftStatus(id: $id, status: $status) {
-       id
-       name
-       status
-     }
-   }
-  ''';
+  // TODO(gql-2-3-1): Define Query for Mutation
+  static const String setLiftStatus = '';
 }

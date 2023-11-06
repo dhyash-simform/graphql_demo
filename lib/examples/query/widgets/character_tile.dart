@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../model/character.dart';
+import '../../../model/character/character.dart';
 
 class CharacterTile extends StatelessWidget {
   const CharacterTile({
@@ -23,7 +23,9 @@ class CharacterTile extends StatelessWidget {
                 image: NetworkImage(character.image),
               ),
               color: Colors.grey.shade100,
-              borderRadius: BorderRadius.circular(26),
+              borderRadius: const BorderRadius.all(
+                Radius.circular(26),
+              ),
               boxShadow: const [
                 BoxShadow(
                   offset: Offset(0, 5),

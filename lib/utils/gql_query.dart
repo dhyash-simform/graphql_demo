@@ -1,46 +1,7 @@
 class GqlQuery {
-  // TODO(Un-Task-1): Define performing query here ex. character
-  static String character = r'''
-     query MyQuery($charId: ID!) {
-       character(id: $charId) {
-         created
-         id
-         image
-         name
-         species
-         status
-         gender
-       }
-     }
-   ''';
+  // TODO(gql-1-1): Define your query here to get characters data
+  static String characters = '';
 
-  // TODO(Task-3): Define performing query here ex. characters
-  static String characters = r'''
-    query MyQuery($page: Int!) {
-      characters(page: $page) {
-        info {
-          count
-          next
-          prev
-          pages
-        }
-        results {
-          id
-          image
-          name
-        }
-      }
-    }
-   ''';
-
-  static String lifts = r'''
-  query MyQuery($status: LiftStatus) {  
-    allLifts(status : $status) {
-      id
-      name      
-      status      
-      night      
-    } 
-  }
-  ''';
+  // TODO(gql-2-1): Define your query here to get lifts data
+  static String lifts = '';
 }
