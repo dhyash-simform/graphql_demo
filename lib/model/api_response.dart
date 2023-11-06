@@ -2,22 +2,22 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'info.dart';
+import 'info/info.dart';
 
-part 'base_response.freezed.dart';
-part 'base_response.g.dart';
+part 'api_response.freezed.dart';
+part 'api_response.g.dart';
 
 @Freezed(genericArgumentFactories: true)
-class BaseResponse<T> with _$BaseResponse<T> {
+class ApiResponse<T> with _$ApiResponse<T> {
   @JsonSerializable(explicitToJson: true, genericArgumentFactories: true)
-  const factory BaseResponse({
+  const factory ApiResponse({
     required Info info,
     required T results,
-  }) = _BaseResponse;
+  }) = _ApiResponse;
 
-  factory BaseResponse.fromJson(
+  factory ApiResponse.fromJson(
     Map<String, dynamic> json,
     T Function(Object?) fromJsonT,
   ) =>
-      _$BaseResponseFromJson(json, fromJsonT);
+      _$ApiResponseFromJson(json, fromJsonT);
 }

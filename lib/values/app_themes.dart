@@ -8,11 +8,12 @@ class AppThemes {
       seedColor: Colors.deepPurple,
     ),
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.transparent,
+      backgroundColor: AppColors.black,
+      elevation: 0,
       scrolledUnderElevation: 0,
       titleTextStyle: TextStyle(
         fontWeight: FontWeight.bold,
-        color: Colors.black,
+        color: Colors.white,
         fontSize: 22,
       ),
     ),
@@ -26,7 +27,11 @@ class AppThemes {
         elevation: 10,
       ),
     ),
-    scaffoldBackgroundColor: const Color(0xffEFEFF4),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: AppColors.black,
+      unselectedItemColor: Colors.white30,
+      elevation: 0,
+    ),
     useMaterial3: true,
   );
 }

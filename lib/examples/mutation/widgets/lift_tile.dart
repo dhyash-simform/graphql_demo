@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../model/lift.dart';
+import '../../../model/lift/lift.dart';
 import '../../../values/app_colors.dart';
 
 class LiftTile extends StatelessWidget {
