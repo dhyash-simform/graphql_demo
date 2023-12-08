@@ -7,14 +7,14 @@ class CharacterView extends StatelessWidget {
     required this.charactersView,
     required this.itemCount,
     required this.onItemBuild,
-    required this.childrens,
+    this.fetchMore,
     super.key,
   });
 
   final PageStorageKey<String> charactersView;
   final int itemCount;
   final (String? image, String? name) Function(int index) onItemBuild;
-  final List<Widget> childrens;
+  final Widget? fetchMore;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,11 @@ class CharacterView extends StatelessWidget {
             name: onItemBuild(index).$2 ?? '',
           ),
         ),
-        ...childrens,
+        if (fetchMore != null)
+          Center(
+            heightFactor: 2,
+            child: fetchMore,
+          ),
       ],
     );
   }

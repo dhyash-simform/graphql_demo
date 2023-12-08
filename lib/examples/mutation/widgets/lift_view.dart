@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../../../schemas/moon_high_way/generated/moon_high_way.schema.graphql.dart';
@@ -17,22 +19,22 @@ class LiftView extends StatelessWidget {
   final Future<void> Function() onRefresh;
   final EnumLiftStatus currentValue;
   final ValueNotifier<EnumLiftStatus> statusNotifier;
-  final void Function(EnumLiftStatus) onTabChange;
+  final FutureOr<void> Function(EnumLiftStatus) onTabChange;
   final int itemCount;
   final Widget Function(int index) onItemBuild;
 
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-      onRefresh: () async => onRefresh,
+      onRefresh: onRefresh,
       child: ListView(
         padding: const EdgeInsets.all(20),
         children: [
           GDSegmentBtn(
             currentValue: currentValue,
-            onSelectionChanged: (EnumLiftStatus value) {
+            onSelectionChanged: (EnumLiftStatus value) async {
               statusNotifier.value = value;
-              onTabChange(value);
+              await onTabChange(value);
             },
           ),
           const SizedBox(height: 20),

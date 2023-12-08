@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../../../schemas/moon_high_way/generated/moon_high_way.schema.graphql.dart';
@@ -11,7 +13,7 @@ class GDSegmentBtn extends StatelessWidget {
   });
 
   final EnumLiftStatus currentValue;
-  final void Function(EnumLiftStatus) onSelectionChanged;
+  final FutureOr<void> Function(EnumLiftStatus) onSelectionChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,7 @@ class GDSegmentBtn extends StatelessWidget {
         ),
       ],
       selected: {currentValue},
-      onSelectionChanged: (value) => onSelectionChanged(
+      onSelectionChanged: (value) async => await onSelectionChanged(
         value.first,
       ),
     );
