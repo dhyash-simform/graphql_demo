@@ -1,1 +1,9 @@
 # TODO(Task2-5): Define Mutation Query
+
+mutation UpdateLiftStatus($id: ID!, $status: LiftStatus!) {
+    setLiftStatus(id: $id, status: $status) {
+        id
+        name
+        status
+    }
+}

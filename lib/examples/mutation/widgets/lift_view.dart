@@ -24,7 +24,7 @@ class LiftView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-      onRefresh: () async => onRefresh,
+      onRefresh: onRefresh,
       child: ListView(
         padding: const EdgeInsets.all(20),
         children: [

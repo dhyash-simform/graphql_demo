@@ -1,2 +1,17 @@
 # TODO(Task1-3): Define Query for getting all characters
 
+query GetCharacters($page: Int!) {
+    characters(page: $page) {
+        info {
+            count
+            next
+            prev
+            pages
+        }
+        results {
+            id
+            image
+            name
+        }
+    }
+}
