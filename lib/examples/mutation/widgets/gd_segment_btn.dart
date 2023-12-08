@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../schemas/moon_high_way/generated/moon_high_way.schema.graphql.dart';
 import '../../../values/app_colors.dart';
 
 class GDSegmentBtn extends StatelessWidget {
@@ -9,12 +10,12 @@ class GDSegmentBtn extends StatelessWidget {
     super.key,
   });
 
-  final String currentValue;
-  final void Function(String) onSelectionChanged;
+  final EnumLiftStatus currentValue;
+  final void Function(EnumLiftStatus) onSelectionChanged;
 
   @override
   Widget build(BuildContext context) {
-    return SegmentedButton<String>(
+    return SegmentedButton<EnumLiftStatus>(
       selectedIcon: const Icon(
         Icons.circle_rounded,
         color: AppColors.pink,
@@ -24,21 +25,21 @@ class GDSegmentBtn extends StatelessWidget {
       ),
       segments: const [
         ButtonSegment(
-          value: 'OPEN',
+          value: EnumLiftStatus.OPEN,
           label: Text(
             'OPEN',
             style: TextStyle(color: Colors.white),
           ),
         ),
         ButtonSegment(
-          value: 'CLOSED',
+          value: EnumLiftStatus.CLOSED,
           label: Text(
             'CLOSED',
             style: TextStyle(color: Colors.white),
           ),
         ),
         ButtonSegment(
-          value: 'HOLD',
+          value: EnumLiftStatus.HOLD,
           label: Text(
             'HOLD',
             style: TextStyle(color: Colors.white),

@@ -1,0 +1,30 @@
+# operation type ex. query, mutation
+query CharacterById($id: ID!, $rick: ID!) { # input thought variable
+    character(id: $id) {
+        id
+        name
+        status
+    }
+    characters(page: 1) { # arguments ex. page
+        # selection set ex. info
+        info {
+            count
+            pages
+            next
+        }
+        # nested field characters --> results
+        results {
+            ...CharacterDetail
+        }
+    }
+    rick: character(id: $rick) { # alias for naming convension
+        ...CharacterDetail
+    }
+}
+
+# usage of fragments for reducing dublications
+fragment CharacterDetail on Character {
+    id
+    name
+    status
+}

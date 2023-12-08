@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../../model/character/character.dart';
-
 class CharacterTile extends StatelessWidget {
   const CharacterTile({
-    required this.character,
+    required this.profilePic,
+    required this.name,
     super.key,
   });
 
-  final Character character;
+  final String profilePic;
+  final String name;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class CharacterTile extends StatelessWidget {
           child: DecoratedBox(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage(character.image),
+                image: NetworkImage(profilePic),
               ),
               color: Colors.grey.shade100,
               borderRadius: const BorderRadius.all(
@@ -37,7 +37,7 @@ class CharacterTile extends StatelessWidget {
           ),
         ),
         Text(
-          character.name,
+          name,
           overflow: TextOverflow.ellipsis,
           maxLines: 1,
           style: const TextStyle(

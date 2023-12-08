@@ -1,0 +1,16 @@
+targets:
+  $default:
+    builders:
+      graphql_codegen:
+        options:
+          scopes:
+            - lib/schemas/rick_any_morty/**
+            - lib/schemas/moon_high_way/**
+          clients:
+            - graphql
+            - graphql_flutter
+          # Where to put the generated types, in this case a folder in the
+          # relative directory of the graphql files called __generated__
+          outputDirectory: generated
+          namingSeparator: ""
+

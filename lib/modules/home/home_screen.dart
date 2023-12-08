@@ -15,6 +15,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
 
+  static final List<Widget> examples = [
+    const QueryExample(),
+    MutationExample(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,10 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: GradientBackground(
         child: IndexedStack(
           index: currentIndex,
-          children: [
-            const QueryExample(),
-            MutationExample(),
-          ],
+          children: examples,
         ),
       ),
       bottomNavigationBar: HomeNavBar(

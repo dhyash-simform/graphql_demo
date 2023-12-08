@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 
-import '../../../model/lift/lift.dart';
+import '../../../schemas/moon_high_way/generated/moon_high_way.schema.graphql.dart';
 import '../../../values/app_colors.dart';
 
 class LiftTile extends StatelessWidget {
   const LiftTile({
-    required this.lift,
     required this.onSelected,
+    required this.name,
+    required this.status,
     super.key,
   });
 
-  final Lift lift;
-  final void Function(String) onSelected;
+  final String name;
+  final String status;
+  final void Function(EnumLiftStatus) onSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class LiftTile extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text(
-                      lift.name,
+                      name,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -43,7 +45,7 @@ class LiftTile extends StatelessWidget {
                         text: 'Status: ',
                         children: [
                           TextSpan(
-                            text: lift.status,
+                            text: status,
                             style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w600,
@@ -67,15 +69,15 @@ class LiftTile extends StatelessWidget {
                   itemBuilder: (_) {
                     return [
                       const PopupMenuItem(
-                        value: 'OPEN',
+                        value: EnumLiftStatus.OPEN,
                         child: Text('OPEN'),
                       ),
                       const PopupMenuItem(
-                        value: 'CLOSED',
+                        value: EnumLiftStatus.CLOSED,
                         child: Text('CLOSED'),
                       ),
                       const PopupMenuItem(
-                        value: 'HOLD',
+                        value: EnumLiftStatus.HOLD,
                         child: Text('HOLD'),
                       ),
                     ];

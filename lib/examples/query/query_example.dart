@@ -7,7 +7,7 @@ class QueryExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO(gql-1-2): Define Query Widget
-    return const SizedBox();
+    // TODO(Task1-4): Define Query Widget
+    return const SizedBox.shrink();
   }
 }
