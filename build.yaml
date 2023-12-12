@@ -3,6 +3,12 @@ targets:
     builders:
       graphql_codegen:
         options:
+          scalars:
+            ISODateTime:
+              type: CustomDateTime
+              fromJsonFunctionName: customDateTimeFromJson
+              toJsonFunctionName: customDateTimeToJson
+              import: lib/schemas/scalar.dart
           scopes:
             - lib/schemas/rick_any_morty/**
             - lib/schemas/moon_high_way/**
@@ -13,4 +19,6 @@ targets:
           # relative directory of the graphql files called __generated__
           outputDirectory: generated
           namingSeparator: ""
+
+
 

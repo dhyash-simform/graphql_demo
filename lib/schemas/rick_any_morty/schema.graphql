@@ -28,28 +28,12 @@ type Episode {
     name: String
 }
 
-type Episodes {
-    info: Info
-    results: [Episode]
-}
-
 input FilterCharacter {
     name: String
     status: String
     species: String
     type: String
     gender: String
-}
-
-input FilterEpisode {
-    name: String
-    episode: String
-}
-
-input FilterLocation {
-    name: String
-    type: String
-    dimension: String
 }
 
 type Info {
@@ -68,21 +52,9 @@ type Location {
     type: String
 }
 
-type Locations {
-    info: Info
-    results: [Location]
-}
-
 type Query {
     character(id: ID!): Character
     characters(filter: FilterCharacter, page: Int): Characters
-    charactersByIds(ids: [ID!]!): [Character]
-    episode(id: ID!): Episode
-    episodes(filter: FilterEpisode, page: Int): Episodes
-    episodesByIds(ids: [ID!]!): [Episode]
-    location(id: ID!): Location
-    locations(filter: FilterLocation, page: Int): Locations
-    locationsByIds(ids: [ID!]!): [Location]
 }
 
 

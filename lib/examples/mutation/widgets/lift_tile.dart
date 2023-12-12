@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../schemas/moon_high_way/generated/moon_high_way.schema.graphql.dart';
+import '../../../schemas/moon_high_way/operations/gql_operations.dart';
 import '../../../values/app_colors.dart';
 
 class LiftTile extends StatelessWidget {
@@ -46,10 +46,7 @@ class LiftTile extends StatelessWidget {
                         children: [
                           TextSpan(
                             text: status,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                            ),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ],
                         style: const TextStyle(

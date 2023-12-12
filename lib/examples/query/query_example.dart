@@ -1,11 +1,11 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:graphql_demo/schemas/rick_any_morty/query/generated/characters.query.graphql.dart';
-import 'package:graphql_demo/values/app_client.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-import 'widgets/character_view.dart';
+import '../../schemas/rick_any_morty/operations/gql_operations.dart';
+import '../../values/app_client.dart';
+import 'widgets/characters_list_view.dart';
 
 class QueryExample extends StatelessWidget {
   const QueryExample({super.key});
@@ -41,22 +41,22 @@ class QueryExample extends StatelessWidget {
 
             final response = result.parsedData!.characters;
 
-            return CharacterView(
+            return CharactersListView(
               charactersView: charactersListView,
               itemCount: response?.results?.length ?? 0,
               onItemBuild: (index) => (
                 response?.results?[index]?.image,
                 response?.results?[index]?.name,
               ),
-              fetchMore: response?.info?.next == null
-                  ? const SizedBox()
+              fetchMore: response?.page?.next == null
+                  ? const SizedBox.shrink()
                   : result.isLoading
                       ? const CircularProgressIndicator()
                       : FilledButton(
                           onPressed: () => fetchMore?.call(
                             FetchMoreOptionsQueryGetCharacters(
                               variables: VariablesQueryGetCharacters(
-                                page: response?.info?.next ?? 1,
+                                page: response?.page?.next ?? 1,
                               ),
                               updateQuery: (previousData, currentData) {
                                 final previousCharacters =

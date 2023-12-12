@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../../../schemas/moon_high_way/generated/moon_high_way.schema.graphql.dart';
+import '../../../schemas/moon_high_way/operations/gql_operations.dart';
 import 'gd_segment_btn.dart';
 
-class LiftView extends StatelessWidget {
-  const LiftView({
+class LiftsListView extends StatelessWidget {
+  const LiftsListView({
     required this.onRefresh,
     required this.currentValue,
     required this.statusNotifier,

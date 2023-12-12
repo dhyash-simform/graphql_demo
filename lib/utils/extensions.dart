@@ -1,6 +1,6 @@
 // ignore_for_file: no_default_cases
 
-import '../schemas/moon_high_way/generated/moon_high_way.schema.graphql.dart';
+import '../schemas/moon_high_way/generated/schema.graphql.dart';
 
 extension EnumExtension on EnumLiftStatus {
   String get toEnumString {

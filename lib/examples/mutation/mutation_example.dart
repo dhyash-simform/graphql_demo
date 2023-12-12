@@ -1,15 +1,13 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:graphql_demo/schemas/moon_high_way/operations/gql_operations.dart';
 import 'package:graphql_demo/utils/extensions.dart';
 import 'package:graphql_demo/values/app_client.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-import '../../schemas/moon_high_way/generated/moon_high_way.schema.graphql.dart';
-import '../../schemas/moon_high_way/mutation/generated/update_lift_status.mutation.graphql.dart';
-import '../../schemas/moon_high_way/query/generated/lifts.query.graphql.dart';
 import 'widgets/lift_tile.dart';
-import 'widgets/lift_view.dart';
+import 'widgets/lifts_list_view.dart';
 
 class MutationExample extends StatelessWidget {
   MutationExample({super.key});
@@ -24,11 +22,13 @@ class MutationExample extends StatelessWidget {
       client: AppClient.moonHighwayClient,
       child: ValueListenableBuilder(
         valueListenable: liftStatus,
-        builder: (context, value, __) => QueryGetLiftsWidget(
+        builder: (context, value, __) => Query(
           options: OptionsQueryGetLifts(
             variables: VariablesQueryGetLifts(
               status: value,
             ),
+            fetchPolicy: FetchPolicy.cacheOnly,
+            // pollInterval: Duration(seconds: 1),
           ),
           builder: (result, {fetchMore, refetch}) {
             if (result.isLoading && result.parsedData == null) {
@@ -46,37 +46,46 @@ class MutationExample extends StatelessWidget {
                   child: Text('No Data'),
                 );
               }
+
               final response = result.parsedData!.allLifts;
 
-              return LiftView(
+              return LiftsListView(
                 onRefresh: () async => refetch?.call(),
                 currentValue: value,
                 statusNotifier: liftStatus,
                 onTabChange: (status) => refetch?.call(),
                 itemCount: response.length,
-                onItemBuild: (index) => MutationUpdateLiftStatusWidget(
-                  options: WidgetOptionsMutationUpdateLiftStatus(),
-                  builder: (runMutation, result) => LiftTile(
-                    onSelected: (status) {
-                      runMutation(
-                        optimisticResult: MutationUpdateLiftStatus(
-                          setLiftStatus: MutationUpdateLiftStatussetLiftStatus(
-                            id: response[index].id,
-                            name: response[index].name,
+                onItemBuild: (index) {
+                  final lift = response[index];
+                  return Mutation(
+                    options: OptionsMutationUpdateLiftStatus(
+                      variables: VariablesMutationUpdateLiftStatus(
+                        id: lift.id,
+                        status: lift.status ?? EnumLiftStatus.OPEN,
+                      ),
+                    ),
+                    builder: (runMutation, result) => LiftTile(
+                      onSelected: (status) {
+                        runMutation(
+                          VariablesMutationUpdateLiftStatus(
+                            id: lift.id,
                             status: status,
+                          ).toJson(),
+                          optimisticResult: MutationUpdateLiftStatus(
+                            setLiftStatus:
+                                MutationUpdateLiftStatussetLiftStatus(
+                              id: lift.id,
+                              name: lift.name,
+                              status: status,
+                            ),
                           ),
-                        ),
-                        VariablesMutationUpdateLiftStatus(
-                          id: response[index].id,
-                          status: status,
-                        ),
-                      );
-                    },
-                    name: response[index].name,
-                    status: (response[index].status ?? EnumLiftStatus.OPEN)
-                        .toEnumString,
-                  ),
-                ),
+                        );
+                      },
+                      name: lift.name,
+                      status: (lift.status ?? EnumLiftStatus.OPEN).toEnumString,
+                    ),
+                  );
+                },
               );
             }
           },

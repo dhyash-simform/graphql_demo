@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'character_tile.dart';
 
-class CharacterView extends StatelessWidget {
-  const CharacterView({
+class CharactersListView extends StatelessWidget {
+  const CharactersListView({
     required this.charactersView,
     required this.itemCount,
     required this.onItemBuild,

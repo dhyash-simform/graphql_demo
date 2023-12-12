@@ -2,11 +2,8 @@
 
 query GetCharacters($page: Int!) {
     characters(page: $page) {
-        info {
-            count
+        page: info {
             next
-            prev
-            pages
         }
         results {
             id

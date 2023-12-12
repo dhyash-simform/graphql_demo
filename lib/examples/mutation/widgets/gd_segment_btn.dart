@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../../../schemas/moon_high_way/generated/moon_high_way.schema.graphql.dart';
+import '../../../schemas/moon_high_way/operations/gql_operations.dart';
 import '../../../values/app_colors.dart';
 
 class GDSegmentBtn extends StatelessWidget {
