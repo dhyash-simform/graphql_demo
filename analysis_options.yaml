@@ -7,6 +7,7 @@ analyzer:
 
 linter:
   rules:
+    flutter_style_todos: false
     public_member_api_docs: false
     library_private_types_in_public_api: false
     always_use_package_imports: false

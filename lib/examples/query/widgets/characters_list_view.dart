@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'character_tile.dart';
 
 class CharactersListView extends StatelessWidget {
+  /// In item build provide two values: Image, Name
   const CharactersListView({
     required this.charactersView,
     required this.itemCount,
