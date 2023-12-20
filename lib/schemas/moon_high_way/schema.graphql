@@ -40,3 +40,7 @@ type Query {
 type Mutation {
     setLiftStatus(id: ID!, status: LiftStatus!): Lift!
 }
+
+type Subscription {
+    liftStatusChange: Lift
+}
