@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:graphql_demo/values/app_colors.dart';
 
-import '../../../schemas/moon_high_way/operations/gql_operations.dart';
-import '../../../values/app_colors.dart';
-
-class LiftTile extends StatelessWidget {
-  const LiftTile({
-    required this.onSelected,
-    required this.name,
-    required this.status,
+class LiftCard extends StatelessWidget {
+  const LiftCard({
+    required this.liftName,
+    required this.liftStatus,
     super.key,
   });
 
-  final String name;
-  final String status;
-  final void Function(EnumLiftStatus) onSelected;
+  final String liftName;
+  final String liftStatus;
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: const BorderRadius.all(Radius.circular(20)),
+      borderRadius: const BorderRadius.all(
+        Radius.circular(20),
+      ),
       child: ColoredBox(
         color: AppColors.black,
         child: Padding(
@@ -28,9 +26,10 @@ class LiftTile extends StatelessWidget {
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      name,
+                      liftName,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -43,7 +42,7 @@ class LiftTile extends StatelessWidget {
                         text: 'Status: ',
                         children: [
                           TextSpan(
-                            text: status,
+                            text: liftStatus,
                             style: const TextStyle(color: Colors.white),
                           ),
                         ],
@@ -54,29 +53,6 @@ class LiftTile extends StatelessWidget {
                       ),
                     ),
                   ],
-                ),
-              ),
-              Center(
-                child: PopupMenuButton(
-                  padding: EdgeInsets.zero,
-                  color: Colors.white,
-                  onSelected: onSelected,
-                  itemBuilder: (_) {
-                    return [
-                      const PopupMenuItem(
-                        value: EnumLiftStatus.OPEN,
-                        child: Text('OPEN'),
-                      ),
-                      const PopupMenuItem(
-                        value: EnumLiftStatus.CLOSED,
-                        child: Text('CLOSED'),
-                      ),
-                      const PopupMenuItem(
-                        value: EnumLiftStatus.HOLD,
-                        child: Text('HOLD'),
-                      ),
-                    ];
-                  },
                 ),
               ),
             ],

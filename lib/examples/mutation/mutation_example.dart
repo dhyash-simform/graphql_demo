@@ -27,7 +27,7 @@ class MutationExample extends StatelessWidget {
             variables: VariablesQueryGetLifts(
               status: value,
             ),
-            fetchPolicy: FetchPolicy.cacheOnly,
+            // fetchPolicy: FetchPolicy.cacheOnly,
             // pollInterval: Duration(seconds: 1),
           ),
           builder: (result, {fetchMore, refetch}) {

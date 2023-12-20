@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 class AppThemes {
-  static final theme = ThemeData(
-    colorScheme: ColorScheme.fromSeed(
-      seedColor: Colors.deepPurple,
-    ),
+  const AppThemes._();
+
+  static final theme = ThemeData.dark().copyWith(
+    useMaterial3: true,
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.black,
       elevation: 0,
       scrolledUnderElevation: 0,
+      backgroundColor: AppColors.black,
       titleTextStyle: TextStyle(
         fontWeight: FontWeight.bold,
         color: Colors.white,
@@ -19,19 +19,19 @@ class AppThemes {
     ),
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(
+        elevation: 10,
         backgroundColor: AppColors.black,
         textStyle: const TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.w600,
         ),
-        elevation: 10,
       ),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      elevation: 0,
       backgroundColor: AppColors.black,
       unselectedItemColor: Colors.white30,
-      elevation: 0,
     ),
-    useMaterial3: true,
+    colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
   );
 }

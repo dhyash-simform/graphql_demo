@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:graphql_demo/examples/subscription/widgets/lift_card.dart';
 import 'package:graphql_demo/schemas/moon_high_way/operations/gql_operations.dart';
 import 'package:graphql_demo/values/app_apis.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
@@ -13,14 +14,45 @@ class SubscriptionExample extends StatelessWidget {
     return GraphQLProvider(
       client: ValueNotifier(
         GraphQLClient(
-          link: WebSocketLink(AppApis.moonHighWayApiSubscription),
+          link: Link.from([
+            WebSocketLink(
+              AppApis.moonHighWayApiSubscription,
+            ),
+          ]),
           cache: GraphQLCache(),
         ),
       ),
       child: Subscription(
-        options: OptionsSubscriptionOnChangeStatus(),
+        options: SubscriptionOptions(
+          parserFn: (data) => SubscriptionOnChangeStatusliftStatusChange(
+            id: data['liftStatusChange']['id'] as String,
+            name: data['liftStatusChange']['name'] as String,
+            status: fromJsonEnumLiftStatus(
+              data['liftStatusChange']['status'] as String,
+            ),
+          ),
+          document: gql(
+            '''
+            subscription OnChangeStatus {
+                liftStatusChange{
+                    id
+                    name
+                    status
+                }
+            }
+          ''',
+          ),
+        ),
+        onSubscriptionResult: (subscriptionResult, client) {
+          print(subscriptionResult);
+        },
         builder: (result) {
-          if (result.isLoading && result.parsedData == null) {
+          if (result.isLoading && result.data == null) {
+            if (result.data == null) {
+              return const Center(
+                child: Text('No Data'),
+              );
+            }
             return const Center(
               child: CircularProgressIndicator(),
             );
@@ -30,14 +62,18 @@ class SubscriptionExample extends StatelessWidget {
               child: Text('Error: ${result.exception}'),
             );
           } else {
-            if (result.parsedData == null) {
+            if (result.data == null) {
               return const Center(
                 child: Text('No Data'),
               );
             }
-            return Center(
-              child: Text(
-                result.parsedData?.liftStatusChange?.toJson().toString() ?? '',
+            return Padding(
+              padding: const EdgeInsets.all(20),
+              child: LiftCard(
+                liftName: result.parsedData?.name ?? '-',
+                liftStatus: toJsonEnumLiftStatus(
+                  result.parsedData?.status ?? EnumLiftStatus.CLOSED,
+                ),
               ),
             );
           }
