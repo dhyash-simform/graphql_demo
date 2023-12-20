@@ -35,10 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: GradientBackground(
-        child: IndexedStack(
-          index: currentIndex,
-          children: examples,
-        ),
+        child: IndexedStack(index: currentIndex, children: examples),
       ),
       bottomNavigationBar: HomeNavBar(
         currentIndex: currentIndex,

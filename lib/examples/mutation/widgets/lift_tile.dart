@@ -18,9 +18,7 @@ class LiftTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: const BorderRadius.all(
-        Radius.circular(20),
-      ),
+      borderRadius: const BorderRadius.all(Radius.circular(20)),
       child: ColoredBox(
         color: AppColors.black,
         child: Padding(

@@ -17,16 +17,16 @@ class HomeNavBar extends StatelessWidget {
       currentIndex: currentIndex,
       items: const [
         BottomNavigationBarItem(
-          icon: Icon(
-            Icons.home,
-          ),
+          icon: Icon(Icons.home),
           label: 'Query',
         ),
         BottomNavigationBarItem(
-          icon: Icon(
-            Icons.home,
-          ),
+          icon: Icon(Icons.home),
           label: 'Mutation',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Subscription',
         ),
       ],
     );

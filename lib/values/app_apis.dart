@@ -1,6 +1,9 @@
 class AppApis {
+  const AppApis._();
+
   static const String rickAndMortyApi = 'https://rickandmortyapi.com/graphql/';
-  static const String moonHighWayApi = 'https://snowtooth.moonhighway.com';
+  static const String moonHighWayHost = 'snowtooth.moonhighway.com';
+  static const String moonHighWayApi = 'https://$moonHighWayHost';
   static const String moonHighWayApiSubscription =
-      'ws://snowtooth.moonhighway.com/graphql';
+      'ws://$moonHighWayHost/graphql';
 }

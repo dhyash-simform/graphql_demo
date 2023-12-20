@@ -22,30 +22,19 @@ class GDSegmentBtn extends StatelessWidget {
         Icons.circle_rounded,
         color: AppColors.pink,
       ),
-      style: FilledButton.styleFrom(
-        backgroundColor: Colors.black,
-      ),
+      style: FilledButton.styleFrom(backgroundColor: Colors.black),
       segments: const [
         ButtonSegment(
           value: EnumLiftStatus.OPEN,
-          label: Text(
-            'OPEN',
-            style: TextStyle(color: Colors.white),
-          ),
+          label: Text('OPEN', style: TextStyle(color: Colors.white)),
         ),
         ButtonSegment(
           value: EnumLiftStatus.CLOSED,
-          label: Text(
-            'CLOSED',
-            style: TextStyle(color: Colors.white),
-          ),
+          label: Text('CLOSED', style: TextStyle(color: Colors.white)),
         ),
         ButtonSegment(
           value: EnumLiftStatus.HOLD,
-          label: Text(
-            'HOLD',
-            style: TextStyle(color: Colors.white),
-          ),
+          label: Text('HOLD', style: TextStyle(color: Colors.white)),
         ),
       ],
       selected: {currentValue},

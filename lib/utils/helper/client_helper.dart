@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:graphql/client.dart';
 
 class ClientHelper {
+  const ClientHelper._();
+
   static ValueNotifier<GraphQLClient> configClient({required String url}) {
     final client = GraphQLClient(
       /// HttpLink, AuthLink, Others
@@ -15,12 +17,10 @@ class ClientHelper {
   }
 
   static ValueNotifier<GraphQLClient> configSubscriptionClient({
-    required String url,
+    required String subscriptionUrl,
   }) {
     final client = GraphQLClient(
-      link: Link.from([
-        WebSocketLink(url),
-      ]),
+      link: Link.from([WebSocketLink(subscriptionUrl)]),
       cache: GraphQLCache(),
     );
     return ValueNotifier(client);

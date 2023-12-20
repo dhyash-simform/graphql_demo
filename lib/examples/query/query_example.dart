@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+// import 'package:graphql_demo/widgets/gql_error.dart';
+// import 'package:graphql_demo/widgets/gql_loading.dart';
+// import 'package:graphql_demo/widgets/gql_no_data.dart';
 // import 'package:graphql_flutter/graphql_flutter.dart';
-
+//
 // import '../../schemas/rick_any_morty/operations/gql_operations.dart';
-// import '../../values/app_client.dart';
 // import 'widgets/characters_list_view.dart';
 
 class QueryExample extends StatelessWidget {

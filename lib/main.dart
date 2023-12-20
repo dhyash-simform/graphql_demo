@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'app_widget.dart';
+import 'package:graphql_demo/graphql_demo.dart';
 
 void main() {
-  runApp(const AppWidget());
+  runApp(const GraphqlDemo());
 }

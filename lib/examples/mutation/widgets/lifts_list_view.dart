@@ -39,8 +39,8 @@ class LiftsListView extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           ListView.separated(
-            shrinkWrap: true,
             primary: false,
+            shrinkWrap: true,
             itemCount: itemCount,
             itemBuilder: (_, index) => onItemBuild(index),
             separatorBuilder: (_, __) => const SizedBox(height: 20),

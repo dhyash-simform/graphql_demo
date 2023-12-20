@@ -2,6 +2,8 @@
 // import 'package:graphql_demo/values/app_apis.dart';
 
 class AppClient {
+  const AppClient._();
+
   // TODO(Task1:1) Define Client
   // static final rickAndMortyClient = ClientHelper.configClient(
   //   url: AppApis.rickAndMortyApi,
@@ -13,7 +15,8 @@ class AppClient {
   // );
 
   // TODO(Task3:1) Define Subscription Client
-  // static final moonHighwaySubscriptionClient = ClientHelper.configSubscriptionClient(
-  //   url: AppApis.moonHighWayApiSubscription,
+  // static final moonHighwaySubscriptionClient =
+  //     ClientHelper.configSubscriptionClient(
+  //   subscriptionUrl: AppApis.moonHighWayApiSubscription,
   // );
 }

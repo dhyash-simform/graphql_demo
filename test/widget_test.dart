@@ -7,12 +7,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:graphql_demo/app_widget.dart';
+import 'package:graphql_demo/graphql_demo.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const AppWidget());
+    await tester.pumpWidget(const GraphqlDemo());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
