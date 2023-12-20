@@ -10,7 +10,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'GraphQL Demo App',
-      theme: AppThemes.theme,
+      darkTheme: AppThemes.theme,
       home: const HomeScreen(),
     );
   }

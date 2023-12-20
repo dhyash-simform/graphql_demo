@@ -1,0 +1,7 @@
+subscription OnChangeStatus {
+    liftStatusChange{
+        id
+        name
+        status
+    }
+}

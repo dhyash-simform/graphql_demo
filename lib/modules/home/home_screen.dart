@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graphql_demo/examples/subscription/subscription_example.dart';
 
 import '../../examples/mutation/mutation_example.dart';
 import '../../examples/query/query_example.dart';
@@ -18,13 +19,20 @@ class _HomeScreenState extends State<HomeScreen> {
   static final List<Widget> examples = [
     const QueryExample(),
     MutationExample(),
+    const SubscriptionExample(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(currentIndex == 0 ? 'Query' : 'Mutation'),
+        title: Text(
+          currentIndex == 0
+              ? 'Query'
+              : currentIndex == 1
+                  ? 'Mutation'
+                  : 'Subscription',
+        ),
       ),
       body: GradientBackground(
         child: IndexedStack(

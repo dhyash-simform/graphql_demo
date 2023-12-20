@@ -11,4 +11,9 @@ class AppClient {
   // static final moonHighwayClient = ClientHelper.configClient(
   //   url: AppApis.moonHighWayApi,
   // );
+
+  // TODO(Task3:1) Define Subscription Client
+  // static final moonHighwaySubscriptionClient = ClientHelper.configSubscriptionClient(
+  //   url: AppApis.moonHighWayApiSubscription,
+  // );
 }

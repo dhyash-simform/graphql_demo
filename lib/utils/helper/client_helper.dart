@@ -13,4 +13,16 @@ class ClientHelper {
     );
     return ValueNotifier(client);
   }
+
+  static ValueNotifier<GraphQLClient> configSubscriptionClient({
+    required String url,
+  }) {
+    final client = GraphQLClient(
+      link: Link.from([
+        WebSocketLink(url),
+      ]),
+      cache: GraphQLCache(),
+    );
+    return ValueNotifier(client);
+  }
 }
